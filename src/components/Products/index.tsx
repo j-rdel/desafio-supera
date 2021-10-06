@@ -8,56 +8,30 @@ interface ProductsProps {
     setCart: (product: CartItems) => void
 }
 
+type Type =  {
+    type: string
+}
+
 export function Products (props: ProductsProps){
     const { products } = useContext(ProductsContext)
-    const [orderBy, setOrderBy] = useState(0);
-    
+    const [orderBy, setOrderBy] = useState('name');
+
     function orderProducts(){
-        if (orderBy === 0) {
-            orderByPrice()
-        } else if (orderBy === 1){
-            orderByScore()
-        } else {
-            orderByAlphabet()
-        }
+        orderItems(orderBy)
     }
-    
-    function orderByPrice(){
+
+    function orderItems(value: String) {
         products.sort((a,b)=> {
+           
             let comparison = 0;
-            if (a.price > b.price) {
+            if (a[value as keyof typeof Products] > b[value as keyof typeof Products]) {
               comparison = 1;
-            } else if (a.price < b.price) {
+            } else if (a[value as keyof typeof Products] < b[value as keyof typeof Products]) {
               comparison = -1;
             }
             return comparison;
         });
     }
-
-    function orderByScore(){
-        products.sort((a,b)=> {
-            let comparison = 0;
-            if (a.score > b.score) {
-              comparison = 1;
-            } else if (a.score < b.score) {
-              comparison = -1;
-            }
-            return comparison;
-        });
-    }
-
-    function orderByAlphabet(){
-        products.sort((a,b)=> {
-            let comparison = 0;
-            if (a.name > b.name) {
-              comparison = 1;
-            } else if (a.name < b.name) {
-              comparison = -1;
-            }
-            return comparison;
-        });
-    }
-
     
     orderProducts()
     return (
@@ -65,9 +39,9 @@ export function Products (props: ProductsProps){
             <h1>Produtos</h1>
             <div className="order-buttons">
                 <span>Ordenar por </span>
-                <button onClick={() => setOrderBy(0)}>R$</button>
-                <button onClick={() => setOrderBy(1)}>Popularidade</button>
-                <button onClick={() => setOrderBy(2)}>Ordem alfabetica</button>
+                <button onClick={() => setOrderBy('price')}>R$</button>
+                <button onClick={() => setOrderBy('score')}>Popularidade</button>
+                <button onClick={() => setOrderBy('name')}>Ordem alfabetica</button>
             </div>
             <div className="products-row">
                 {products.map(product => {
