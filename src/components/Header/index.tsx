@@ -17,8 +17,8 @@ export function Header({cart, onOpenCartModal}: HeaderProps){
                     <a href="/">
                         <img src={logoImg} alt="logo" />
                     </a>
-                    <a href="" className="nav-item">Home</a>
-                    <a href="" className="nav-item">Products</a>
+                    <a href="#home" className="nav-item">Home</a>
+                    <a href="/" className="nav-item">Products</a>
                 </div>
                 <div className="header-cart">
                     <button type="button" onClick={onOpenCartModal}>

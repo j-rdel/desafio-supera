@@ -65,7 +65,7 @@ export function Products (props: ProductsProps){
             <h1>Produtos</h1>
             <div className="order-buttons">
                 <span>Ordenar por </span>
-                <button onClick={() => setOrderBy(0)}>Preço</button>
+                <button onClick={() => setOrderBy(0)}>R$</button>
                 <button onClick={() => setOrderBy(1)}>Popularidade</button>
                 <button onClick={() => setOrderBy(2)}>Ordem alfabetica</button>
             </div>

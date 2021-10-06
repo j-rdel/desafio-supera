@@ -45,7 +45,10 @@ export function CartModal({isOpen, onRequestClose, cartItems}: CartModalProps){
         </button>
         <div className="content">
             <h2>Carrinho</h2>
-            {cartItems.map(cart => {
+            <hr />
+            {cartItems.length === 0 
+                ? <span>Seu carrinho está vazio :(</span> 
+                : cartItems.map(cart => {
                 const img = require('../../assets/' + cart.image)
                 return(
                     <div key={cart.id}>
@@ -63,6 +66,7 @@ export function CartModal({isOpen, onRequestClose, cartItems}: CartModalProps){
                     </div>
                 )}
             )}
+            
             <hr />
             <div className="cart-request">
                 <div><h3>Total dos produtos: </h3></div>
@@ -70,13 +74,18 @@ export function CartModal({isOpen, onRequestClose, cartItems}: CartModalProps){
             </div>
             <div className="cart-request">
                 <div><h3>Frete: </h3></div>
-                <div><span>{frete === 0 ? 'Frete gratuito' : ('R$ ' + frete)}</span></div>
+                <div><span>{frete === 0 ? 'Frete gratuito' : ('R$ ' + frete) + ',00'}</span></div>
             </div>
             <div className="cart-request">
                 <div><h3>Total: </h3></div>
                 <div><span>R$ {total + frete}</span></div>
             </div>
-            <button type="button" onClick={()=> alert("Espero que tenham gostado!")}>Comprar</button>
+            <button 
+                type="button" 
+                onClick={()=> alert("Espero que tenham gostado!")}
+            >
+                Comprar
+            </button>
         </div>
         </Modal>
     )
