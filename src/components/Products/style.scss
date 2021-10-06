@@ -1,0 +1,41 @@
+section {
+    max-width: 1120px;
+    margin: 80px auto 0 auto;
+
+}
+
+.order-buttons{
+    display: inline-block;
+}
+
+.products-row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.product-item{
+    width: 280px;
+    transform: scale(0.9);
+    height: 370px;
+    text-align: center;
+    border-radius: 5px;
+    transition-duration: 0.25s;
+    cursor: pointer;
+    padding: 10px;
+
+    h2 {
+        height: 80px;
+        max-width: 280px;
+        font-weight: 400;
+    }
+
+    img {
+        
+    }
+
+    &:hover{
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        transform: scale(0.95);
+    }
+}
