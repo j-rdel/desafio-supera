@@ -23,12 +23,13 @@ export function CartModal({isOpen, onRequestClose, cartItems}: CartModalProps){
     }
 
     function calcDeliveryFee(){
-        total >= 250 ? frete = 0 : frete = cartItems.length*10;
+        total > 250 ? frete = 0 : frete = cartItems.length*10;
         return (frete)
     }
 
-    calcDeliveryFee()
+  
     calcTotal()
+    calcDeliveryFee()
     return (
         <Modal
             isOpen={isOpen} 
