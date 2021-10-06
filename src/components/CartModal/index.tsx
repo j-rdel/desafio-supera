@@ -18,7 +18,7 @@ export function CartModal({isOpen, onRequestClose, cartItems}: CartModalProps){
         cartItems.forEach(item => {
             total = total + item.price
         });
-        total >= 250 ? frete = 0 : frete = cartItems.length*10;
+
         return (total)
     }
 
@@ -70,15 +70,15 @@ export function CartModal({isOpen, onRequestClose, cartItems}: CartModalProps){
             <hr />
             <div className="cart-request">
                 <div><h3>Total dos produtos: </h3></div>
-                <div><span>R$ {total}</span></div>
+                <div><span>{(total).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span></div>
             </div>
             <div className="cart-request">
                 <div><h3>Frete: </h3></div>
-                <div><span>{frete === 0 ? 'Frete gratuito' : ('R$ ' + frete) + ',00'}</span></div>
+                <div><span>{frete === 0 ? 'Frete gratuito' : (frete).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span></div>
             </div>
             <div className="cart-request">
                 <div><h3>Total: </h3></div>
-                <div><span>R$ {total + frete}</span></div>
+                <div><span>{(total + frete).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span></div>
             </div>
             <button 
                 type="button" 
